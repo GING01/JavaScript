@@ -34,15 +34,21 @@ este comando elimina  los contenedores que esten detenidos
 >> docker rm m
 >> docker rm 12 mi
 ```
-##MySql
+## MySql
    
 Para utilizar docker con mysql vamos a utilizar el siguiente comando
 ```
    >> docker run --name daniel -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=daniel -e MYSQL_USER=daniel -e MYSQL_PASSWORD=123456 -p 3306:3306 -d mysql
 ```
-##Postgres
+## Postgres
    
    Para utilizar docker con postgres vamos a utilizar el siguiente comando
 ```
-   >> docker run --name andres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=andres -e POSTGRES_DB=Politecnica -p 5432:5432 -d postgres
+   >> docker run --name andrespostgres -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=andres -e POSTGRES_DB=Politecnica -p 5432:5432 -d postgres
 ```
+## Mongo
+   
+   Para utilizar docker con mongo vamos a utilizar el siguiente comando
+```
+   >> docker run --name Andresmongo -p 27017:27017 -d mongo
+   ```
