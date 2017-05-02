@@ -14,3 +14,8 @@
  >> sails lift
  ```
 - se debe usar el comando en la carpeta donde se encuantre el proyecto 
+## sails generate api
+* creacion de modelos
+```
+>> sails generate api <NombreModelo>
+```
