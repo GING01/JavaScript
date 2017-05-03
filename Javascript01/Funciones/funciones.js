@@ -29,3 +29,17 @@ function hazalgo(algo) {
 
 };
 hazalgo(function () {console.log('hola00')});
+hazalgo(function () {return 2});
+function transformarNumero(numero,transformacion) {
+    transformacion(numero);
+}
+
+transformarNumero(5,function (numero) {
+    return numero*2;
+
+})
+
+transformarNumero(8,function (numero) {
+    return numero/2;
+
+})
