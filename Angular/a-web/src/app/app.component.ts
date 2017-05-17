@@ -11,6 +11,7 @@ export class AppComponent {
     "nombre":"Andres",
     "apellido":"Paredes"
   }
+url:string="https://angular.io/";
 
   constructor(){
     console.log("Constructor");
