@@ -1,0 +1,17 @@
+
+p{
+  border: 5px;
+  border-style:solid;
+  border-color: blue;
+
+}
+h1{
+  color: white;
+  background-color: red;
+}
+#verde{
+  border-color: darkseagreen;
+}
+.rojo{
+  color: red;
+}
