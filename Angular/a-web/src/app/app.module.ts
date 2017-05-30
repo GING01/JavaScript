@@ -20,6 +20,6 @@ import { Prueba1Component } from './Components/prueba1/prueba1.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [Prueba1Component]
+  bootstrap: [InicioComponent]
 })
 export class AppModule { }
