@@ -1,10 +1,50 @@
 <h1>Mi primer aplicacion en Angular</h1>
 
+
+<h2>Property Binding</h2>
+
+<h3>Primera forma con llaves dobles </h3>
+<p>{{parrafo}}</p>
+<h3>Segunda forma con []</h3>
+
+<p [style.color]="'green'"
+   [style.background-color]="background"
+   [innerText]="parrafo"></p>
+
+<input type="text" [value]="parrafo">
+<app-estilo></app-estilo>
+
+
+
+
+<p>Mantiene sincronizadas las variables
+  del componente en el html</p>
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 SI HACER ESTO
 <p>Gracias por visitarnos {{usuario.nobre}} {{usuario.apellido}}</p>
 
 NO HACER ESTO
-<h3>Desarrollado por {{
+<h3>Desarrollado por
+
+  {{
   saludar(usuario.nombre,usuario.apellido)}}
 
 </h3>
@@ -13,7 +53,7 @@ NO HACER ESTO
 <h3>{{usuario.nombre +" " + usuario.apellido}}
 </h3>
 
+<!-- no usar : <a href="{{url}}"> -->
 <a [href]="url">
-  <img src="http://res.cloudinary.com/buddahbelly/image/upload/v1423072364/brilliantbritz/angular-js.png" alt="logo Angular">
-
+  <img [src]="src" alt="Logo Angular">
 </a>

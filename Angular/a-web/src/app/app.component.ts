@@ -11,7 +11,11 @@ export class AppComponent {
     "nombre":"Andres",
     "apellido":"Paredes"
   }
-url:string="https://angular.io/";
+
+  parrafo:string = "";
+  background:string = "blue";
+  url:string="https://angular.io";
+  src:string="https://angular.io/resources/images/logos/angular/angular.png";
 
   constructor(){
     console.log("Constructor");
