@@ -25,10 +25,27 @@
 
   <button class="btn btn-outline-success" (click)="cargarPlanetas()">Cargar Planetas</button>
 
-  <div>
-    <ul *ngFor="let planeta of planetas">
-      <li>{{planeta.name}}</li>
-    </ul>
+  <div class="row">
+    <div *ngFor="let planeta of planetas">
+      <div class="col-sm-4">
+        <div class="card" style="width:25rem;">
+          <div class="card-block">
+            <h4  class="card-title">{{planeta.name}} </h4>
+            <p class="card-text">
+              <br><b>Periodo de rotacion: </b>{{planeta.rotation_period}}
+              <br><b>Periodo orbital: </b>{{planeta.orbital_period}}
+              <br><b>Diametro: </b>{{planeta.diameter}}
+              <br><b>Clima: </b>{{planeta.climate}}
+              <br><b>Gravedad: </b>{{planeta.gravity}}
+              <br><b>Terreno: </b>{{planeta.terrain}}
+              <br><b>Superficie de Agua: </b>{{planeta.surface_water}}
+              <br><b>Poblacion: </b>{{planeta.population}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!--<div class="row">
 
