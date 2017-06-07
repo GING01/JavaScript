@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {PlanetaStarWarsInterface} from "../Interfaces/PlanetaStarWarsInterface";
+import {UsuarioClass} from "../../Clases/usuarioClase";
 
 @Component({
   selector: 'app-inicio',
@@ -10,7 +12,8 @@ import 'rxjs/add/operator/map';
 export class InicioComponent implements OnInit {
 
   nombre: string = "Andres";
-  planetas=[];
+  nuevoUsuario:UsuarioClass=new UsuarioClass("");
+  planetas: PlanetaStarWarsInterface[];
   arreglousuarios = [{
 
     nombre: "andres",
@@ -36,6 +39,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('nuevo usuario',this.nuevoUsuario);
   }
 
   cambiarNombre(): void {
@@ -63,6 +67,12 @@ export class InicioComponent implements OnInit {
           let respuesta=response.json();
           console.log(respuesta.next)
           this.planetas=respuesta.results;
+          this.planetas=this.planetas.map(
+            (planeta)=>{
+              planeta.imagenURL="/assets/imagenes/"+planeta.name+".jpg";
+              return planeta;
+            }
+          );
         },
         (error)=>{
           console.log("Error",error)
@@ -73,20 +83,23 @@ export class InicioComponent implements OnInit {
       )
   }
 
+  crearUsuario(){
+    let usuario:UsuarioClass={
+      nombre:this.nuevoUsuario.nombre
+    }
+    this._http.post("http://localhost:1337/usuario",usuario)
+      .subscribe(
+        respuesta=>{
+          let respuestaJson=respuesta.json();
+          console.log('Respuesta',respuesta);
+        },
+        error => {
+          console.log('Error');
+        },
+
+      )
+  }
+
 }
-interface PlanetaStarWars {
-  name: string;
-  rotation_period: number;
-  orbital_period: number;
-  diameter: number;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  surface_water: number;
-  population: number;
-  residents: string[];
-  films: string[];
-  created: string;
-  edited: string;
-  url: string;
-}
+
+

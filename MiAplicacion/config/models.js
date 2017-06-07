@@ -17,7 +17,7 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-   connection: 'mongoDocker',
+   connection: 'localDiskDb',
 
   /***************************************************************************
   *                                                                          *

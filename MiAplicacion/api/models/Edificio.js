@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  connection: 'conexionPostgresDocker',
+  connection: 'localDiskDb',
   attributes: {
     nombre:{
       type:'String'
