@@ -9,14 +9,23 @@
         {{nuevoUsuario | json}}
       </pre>
       <label class="col-form-label">Nombre Usuario:</label>
-      <input class="form-control"
-      placeholder="Ingrese nombre"
-      [(ngModel)]="nuevoUsuario.nombre" type="text">
+      <input class="form-control" placeholder="Ingrese nombre"[(ngModel)]="nuevoUsuario.nombre" type="text">
     </div>
     <button class="btn btn-success"
     (click)="crearUsuario()"> Crear Usuario</button>
   </div>
 </div>
+
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let usuario of usuarios;let indice = index;">
+      <h3>{{usuario.nombre}}</h3>
+      <button class="btn btn-danger" (click)="eliminarUsuario(usuario,indice)"> Eliminar usuario</button>
+      <!--<button class="btn btn-outline-success" (click)="modificarUsuario(usuario,indice)"> Modificar usuario</button>-->
+    </div>
+  </div>
+
+
+
 <!-- <h2>Usuarios Conectados</h2>
 
   <div class="row">

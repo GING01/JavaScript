@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-diametro',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diametro.component.css']
 })
 export class DiametroComponent implements OnInit {
-
+  @Input () diametro: number;
   constructor() { }
 
   ngOnInit() {

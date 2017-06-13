@@ -12,34 +12,49 @@ import {UsuarioClass} from "../../Clases/usuarioClase";
 export class InicioComponent implements OnInit {
 
   nombre: string = "Andres";
-  nuevoUsuario:UsuarioClass=new UsuarioClass("");
+  usuarios: UsuarioClass[] = [];
+  nuevoUsuario: UsuarioClass = new UsuarioClass("");
   planetas: PlanetaStarWarsInterface[];
   arreglousuarios = [{
 
     nombre: "andres",
     apellido: "paredes",
-    conectado:true
+    conectado: true
   }, {
     nombre: "David",
     apellido: "Ruano",
-    conectado:true
+    conectado: true
   }, {
     nombre: "GIng",
     apellido: "Freacks",
-    conectado:false
-  },{
+    conectado: false
+  }, {
     nombre: "Gon",
     apellido: "Freacks",
-    conectado:true
+    conectado: true
 
   }]
 
-  constructor(private _http:Http ) {
+  constructor(private _http: Http) {
 
   }
 
   ngOnInit() {
-    console.log('nuevo usuario',this.nuevoUsuario);
+    this._http
+      .get("http://localhost:1337/Usuario/")
+      .subscribe(
+        respuesta => {
+          let rjson: UsuarioClass[] = respuesta.json();
+
+          this.usuarios = rjson;
+
+          console.log("Usuarios: ", this.usuarios);
+        },
+        error => {
+          console.log("Error: ", error)
+
+        }
+      );
   }
 
   cambiarNombre(): void {
@@ -56,50 +71,92 @@ export class InicioComponent implements OnInit {
     this.nombre = nombreEtiqueta.value;
   }
 
-  cargarPlanetas(){
+  cargarPlanetas() {
     this._http
       .get("http://swapi.co/api/planets")
       //.map(response=>response.json())
       .subscribe(
-        (response)=>{
-          console.log("Response",response)
+        (response) => {
+          console.log("Response", response)
           console.log(response.json())
-          let respuesta=response.json();
+          let respuesta = response.json();
           console.log(respuesta.next)
-          this.planetas=respuesta.results;
-          this.planetas=this.planetas.map(
-            (planeta)=>{
-              planeta.imagenURL="/assets/imagenes/"+planeta.name+".jpg";
+          this.planetas = respuesta.results;
+          this.planetas = this.planetas.map(
+            (planeta) => {
+              planeta.imagenURL = "/assets/imagenes/" + planeta.name + ".jpg";
               return planeta;
             }
           );
         },
-        (error)=>{
-          console.log("Error",error)
+        (error) => {
+          console.log("Error", error)
         },
-        ()=>{
+        () => {
           console.log("Finaly")
         }
       )
   }
 
-  crearUsuario(){
-    let usuario:UsuarioClass={
-      nombre:this.nuevoUsuario.nombre
+  crearUsuario() {
+    let usuario: UsuarioClass = {
+      nombre: this.nuevoUsuario.nombre
     }
-    this._http.post("http://localhost:1337/usuario",usuario)
+    this._http.post("http://localhost:1337/usuario", usuario)
       .subscribe(
-        respuesta=>{
-          let respuestaJson=respuesta.json();
-          console.log('Respuesta',respuesta);
+        respuesta => {
+
+          console.log(respuesta);
+          this.usuarios.push(respuesta.json());
+          this.nuevoUsuario = {};
+
         },
         error => {
-          console.log('Error');
-        },
+          console.log('Error', error);
+        }
+      );
+  }
 
+  eliminarUsuario(usuario: UsuarioClass, indice: number) {
+    this._http.delete(`http://localhost:1337/Usuario/${usuario.id}`)
+      .subscribe(
+        respuesta => {
+          console.log('Indice con index: ', usuario.id);
+          let usuarioBorrado;
+          usuarioBorrado = respuesta.json();
+          this.usuarios = this.usuarios.filter(value => usuarioBorrado.id != value.id);
+
+
+        },
+        error => {
+          console.log('Error', error);
+        }
+      );
+  }
+
+  modificarUsuario(usuario: UsuarioClass, indice: number) {
+    let cambio: UsuarioClass = {
+      nombre: this.nuevoUsuario.nombre
+    }
+
+    this._http.put(`http://localhost:1337/Usuario/${usuario.id}`,cambio)
+      .subscribe(
+        respuesta => {
+
+          let usuarioModificado;
+          usuarioModificado = respuesta.json();
+          this.usuarios = this.usuarios.filter(value => usuarioModificado.id != value.id);
+
+
+        },
+        error => {
+          console.log('Error', error);
+        }
       )
   }
 
 }
+
+
 
 

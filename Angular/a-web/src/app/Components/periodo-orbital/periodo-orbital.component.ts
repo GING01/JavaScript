@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-periodo-orbital',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./periodo-orbital.component.css']
 })
 export class PeriodoOrbitalComponent implements OnInit {
-
+  @Input () orbital_period: number;
   constructor() { }
 
   ngOnInit() {

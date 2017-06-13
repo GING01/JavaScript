@@ -7,7 +7,7 @@ import {PlanetaStarWarsInterface} from "../Interfaces/PlanetaStarWarsInterface";
   styleUrls: ['./clima.component.css']
 })
 export class ClimaComponent implements OnInit {
-  @Input () clima: PlanetaStarWarsInterface;
+  @Input () clima: string;
   constructor() { }
 
   ngOnInit() {

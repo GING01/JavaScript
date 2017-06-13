@@ -1,4 +1,3 @@
-import {isNumber} from "util";
 export class UsuarioClass{
 
   constructor(public nombre?:string,
