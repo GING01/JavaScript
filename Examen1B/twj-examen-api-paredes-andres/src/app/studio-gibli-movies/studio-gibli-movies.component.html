@@ -1,0 +1,13 @@
+<div class=" container">
+  <h1>{{movie.title}}</h1>
+  <p>
+    <br>
+  </p>
+  <app-director [director]="movie.director"></app-director>
+  <app-productor [productor]="movie.producer"></app-productor>
+  <app-critica [critica]="movie.rt_score"></app-critica>
+  <app-description [descripcion]="movie.description"></app-description>
+  <app-lanzamiento [lanzamiento]="movie.release_date"></app-lanzamiento>
+
+
+</div>

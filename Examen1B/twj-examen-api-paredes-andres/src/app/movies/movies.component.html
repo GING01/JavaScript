@@ -1,0 +1,31 @@
+
+<div class="container" style="background: url(https://3.bp.blogspot.com/-RIBQp0Nq-I4/VbabWE6p4fI/AAAAAAAAF4U/s_lcZ7iUwmw/s1600/fan-art-ghibli-18.jpg) no-repeat center fixed;
+background-size: cover; opacity: 0.9">
+
+<div class="jumbotron" style="background-image:
+    url(http://pre10.deviantart.net/fa7b/th/pre/i/2014/038/8/e/studio_ghibli___my_neighbor_totoro_by_morteneng21-d75ing9.jpg);
+    max-width: 100%;
+    height: 100%; background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #8fa6ff">
+  <h1 class="display-3" >
+    <strong>Studio Ghibli API</strong>
+  </h1>
+  <p class="lead" style="align-content: center">Examen Javascript segunda parte
+    <br>por: Andres Paredes</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" role="button" (click)="cargarPeliculas()" >Mostrar Peliculas</a>
+  </p>
+</div>
+ <h2 style="color: whitesmoke">Peliculas</h2>
+
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let movie of movies; let i=index;" style="color:ivory; border: 2px solid white">
+      <img src="{{arregloImagenes[i]}}" class="figure-img img-fluid rounded" style="height: 200px; width: 180px;display:block;margin:0 auto 0 auto" >
+      <app-studio-gibli-movies [movie]="movie">
+      </app-studio-gibli-movies>
+    </div>
+  </div>
+
+</div>

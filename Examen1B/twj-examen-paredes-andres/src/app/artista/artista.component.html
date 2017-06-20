@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="jumbotron" style="background-image:
+    url(http://blog.feebbo.com/wp-content/uploads/2015/10/M%C3%BAsica.jpg);
+    max-width: 100%;
+    height: 100%; background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #8fa6ff">
+    <h1 class="display-3">Artistas</h1>
+    <p class="lead">Ejercicio# 6</p>
+    <p class="lead">por: Andres Paredes</p>
+    <hr class="my-4">
+    <p class="lead"></p>
+    <div class="row">
+      <div class="col-sm-3" *ngFor="let artista of artistas;let indice = index;">
+        <h3>{{artista.nombre}}</h3>
+        <h4>{{artista.estilo}}</h4>
+        <h4>{{artista.paisResidencia}}</h4>
+        <button class="btn btn-danger" (click)="eliminarArtista(artista,indice)"> Eliminar Artista</button>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" id="nombre" aria-describedby="nombre" placeholder="Ingrese un nombre" [(ngModel)]="nuevoArtista.nombre" >
+
+      <label for="estilo">Estilo</label>
+      <input type="text" class="form-control" id="estilo" aria-describedby="estilo" placeholder="Ingrese un estilo" [(ngModel)]="nuevoArtista.estilo">
+
+      <label for="pais">Pais de residencia</label>
+      <input type="text" class="form-control" id="pais" aria-describedby="pais" placeholder="Ingrese el pais de residencia"[(ngModel)]="nuevoArtista.paisResidencia">
+
+    </div>
+
+
+  <button class="btn btn-success"(click)="crearArtista()"> Crear </button>
+
+</div>
