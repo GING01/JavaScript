@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
+
 import {PlanetaStarWarsInterface} from "../Interfaces/PlanetaStarWarsInterface";
 import {UsuarioClass} from "../../Clases/usuarioClase";
 
@@ -46,7 +47,18 @@ export class InicioComponent implements OnInit {
         respuesta => {
           let rjson: UsuarioClass[] = respuesta.json();
 
-          this.usuarios = rjson;
+          this.usuarios = rjson.map(
+            (usuario)=>{
+              usuario.editar=false;
+              return usuario;
+
+              //let objeto1:any= {
+              //  prop1:1,
+              //  prop2:2
+              //}
+              //objeto1.prop3=3;
+            }
+          );
 
           console.log("Usuarios: ", this.usuarios);
         },
@@ -116,7 +128,7 @@ export class InicioComponent implements OnInit {
         }
       );
   }
-
+  /*
   eliminarUsuario(usuario: UsuarioClass, indice: number) {
     this._http.delete(`http://localhost:1337/Usuario/${usuario.id}`)
       .subscribe(
@@ -134,25 +146,35 @@ export class InicioComponent implements OnInit {
       );
   }
 
-  modificarUsuario(usuario: UsuarioClass, indice: number) {
-    let cambio: UsuarioClass = {
-      nombre: this.nuevoUsuario.nombre
-    }
+  modificarUsuario(usuario: UsuarioClass, nombre:string) {
+    let cambio=  {
+      nombre: usuario.nombre
+    };
 
-    this._http.put(`http://localhost:1337/Usuario/${usuario.id}`,cambio)
+    this._http.put("http://localhost:1337/Usuario/"+usuario.id,cambio)
+      .map((res)=>{
+
+      return res.json();
+      })
+      //snippet -> template de codigo
       .subscribe(
-        respuesta => {
-
-          let usuarioModificado;
-          usuarioModificado = respuesta.json();
-          this.usuarios = this.usuarios.filter(value => usuarioModificado.id != value.id);
-
-
+        res=>{
+          console.log("Se actualizao", res);
+          let indice =this.usuarios.indexOf(usuario);
+          this.usuarios[indice].nombre=nombre;
         },
-        error => {
-          console.log('Error', error);
+        err=>{
+          console.log("Error:",err )
         }
-      )
+      );
+  }
+*/
+  eliminarUsuario(usuario:UsuarioClass){
+
+    let indice = this.usuarios.indexOf(usuario);
+
+    this.usuarios.splice(indice,1);
+
   }
 
 }

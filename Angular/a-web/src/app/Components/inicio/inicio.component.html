@@ -5,9 +5,9 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="form-group">
-      <pre>
+      <!--<pre>
         {{nuevoUsuario | json}}
-      </pre>
+      </pre>-->
       <label class="col-form-label">Nombre Usuario:</label>
       <input class="form-control" placeholder="Ingrese nombre"[(ngModel)]="nuevoUsuario.nombre" type="text">
     </div>
@@ -15,11 +15,22 @@
   </div>
 </div>
 
+  <h3>Usuarios:</h3>
+
   <div class="row">
-    <div class="col-sm-3" *ngFor="let usuario of usuarios;let indice = index;">
-      <h3>{{usuario.nombre}}</h3>
-      <button class="btn btn-danger" (click)="eliminarUsuario(usuario,indice)"> Eliminar usuario</button>
-      <!--<button class="btn btn-outline-success" (click)="modificarUsuario(usuario,indice)"> Modificar usuario</button>-->
+    <div class="col-sm-6" *ngFor="let usuario of usuarios;let indice = index;">
+      <div class="margin-usuarios">
+
+        <app-usuario
+          [usuarioLocal]="usuario"
+          (usuarioborrado)="eliminarUsuario($event)"
+
+        ></app-usuario>
+
+
+
+      </div>
+
     </div>
   </div>
 
@@ -46,7 +57,7 @@
   <h2>Planetas de Star Wars</h2>
   <br>
 -->
-  <h2>Planetas</h2>
+ <!-- <h2>Planetas</h2>
   <button class="btn btn-outline-success" (click)="cargarPlanetas()">Cargar Planetas</button>
   <div class="row">
   <div class="col-sm-4" *ngFor="let planeta of planetas; let i=index;">
@@ -54,6 +65,7 @@
     </app-planeta-star-wars>
   </div>
   </div>
+  ->
 <!--
   <div class="row">
     <div *ngFor="let planeta of planetas">

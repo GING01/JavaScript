@@ -12,6 +12,12 @@ import { DiametroComponent } from './Components/diametro/diametro.component';
 import { ClimaComponent } from './Components/clima/clima.component';
 import { GravedadComponent } from './Components/gravedad/gravedad.component';
 import { TerrenoComponent } from './Components/terreno/terreno.component';
+import { UsuarioComponent } from './Components/usuario/usuario.component';
+import { Pagina2Component } from './Components/pagina2/pagina2.component';
+import {ModuloDeRutas} from "./routes";
+import { Pagina21Component } from './Components/pagina21/pagina21.component';
+import { Pagina22Component } from './Components/pagina22/pagina22.component';
+import { Pagina23Component } from './Components/pagina23/pagina23.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +30,20 @@ import { TerrenoComponent } from './Components/terreno/terreno.component';
     DiametroComponent,
     ClimaComponent,
     GravedadComponent,
-    TerrenoComponent
+    TerrenoComponent,
+    UsuarioComponent,
+    Pagina2Component,
+    Pagina21Component,
+    Pagina22Component,
+    Pagina23Component
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ModuloDeRutas
   ],
   providers: [],
-  bootstrap: [InicioComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
